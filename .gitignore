@@ -5,4 +5,5 @@ out/
 resources
 x64/
 Debug/
+*.db
 

@@ -1,7 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="Music_Event/Music_Event.vcxproj" Id="ef6e7eaa-c2f5-451a-b6c2-c3f500ff362b" />
-</Solution>
