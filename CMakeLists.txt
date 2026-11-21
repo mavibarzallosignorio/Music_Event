@@ -43,14 +43,21 @@ add_library(mets_core
     src/Section.cpp
     src/Event.cpp
     src/EventSection.cpp
+
+    # user classes and database setup
+    src/User.cpp
+    src/Customer.cpp
+    src/Manager.cpp
+    src/VenueAdministrator.cpp
+    src/Database.cpp
+    src/SampleData.cpp
 )
 target_include_directories(mets_core PUBLIC src)
-target_link_libraries(mets_core PUBLIC ${WT_DBO_LIBS} Threads::Threads)
+target_link_libraries(mets_core PUBLIC ${WT_DBO_LIBS} ${WT_MAIN_LIBS} Threads::Threads)
 
-# the actual web app (the main.cpp that's already in src)
-add_executable(mets src/main.cpp)
+# the actual web app: main.cpp, the app shell and every page in src/pages
+file(GLOB METS_PAGES CONFIGURE_DEPENDS src/pages/*.cpp)
+add_executable(mets src/main.cpp src/MetsApp.cpp ${METS_PAGES})
 target_link_libraries(mets PRIVATE mets_core ${WT_MAIN_LIBS})
 
-# the test program for Venue, Section, Event and EventSection
-add_executable(venue_test src/venue_test.cpp)
-target_link_libraries(venue_test PRIVATE mets_core)
+# lets the app find resources/ and mets.db in the project folder, no matter where it's
