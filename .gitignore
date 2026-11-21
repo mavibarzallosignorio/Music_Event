@@ -1,4 +1,8 @@
-
+build/
+.vscode/
 .vs/
+out/
+resources
 x64/
 Debug/
+
